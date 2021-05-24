@@ -55,7 +55,15 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  
+  ProductTag.update( req.body, { 
+    where: {id: req.params.id} 
+  } )
+    .then( dbProdcutTagData => {
+      res.json(dbProdcutTagData)
+    })
+    .catch(err =>{
+      res.status(404).json(err);
+    })
   // update a tag's name by its `id` value.0
 });
 
